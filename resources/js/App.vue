@@ -1,7 +1,8 @@
 <template>
     <div>
         <h3>Bitcoin rates from 01.01.2015 to 31.12.2017</h3>
-        <trading-vue v-if="!loading" :data="this.$data" :width="this.width - 40" :height="this.height - 100"></trading-vue>
+        <div id="loading" v-if="loading"></div>
+        <trading-vue v-else :data="this.$data" :width="this.width - 40" :height="this.height - 100"></trading-vue>
     </div>
 </template>
 <script>
@@ -43,3 +44,31 @@ export default {
 }
 
 </script>
+
+<style>
+#loading {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  border: 5px solid blue;
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  -webkit-animation: spin 1s ease-in-out infinite;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+}
+
+@keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+</style>
