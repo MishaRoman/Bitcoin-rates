@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     getData() {
-      axios.get('http://127.0.0.1:8000/api/bitcoin/rates')
+      axios.get('http://kalyna-test.atwebpages.com/api/bitcoin/rates')
         .then(res => {
           this.ohlcv = res.data.data
           this.loading = false

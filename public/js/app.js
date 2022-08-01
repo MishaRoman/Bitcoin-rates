@@ -2088,7 +2088,7 @@ __webpack_require__.r(__webpack_exports__);
     getData: function getData() {
       var _this = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default().get('http://127.0.0.1:8000/api/bitcoin/rates').then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_1___default().get('http://kalyna-test.atwebpages.com/api/bitcoin/rates').then(function (res) {
         _this.ohlcv = res.data.data;
         _this.loading = false;
       });
