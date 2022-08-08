@@ -3,7 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use Carbon\Carbon;
+// use Carbon\Carbon;
 
 class BitcoinRatesResource extends JsonResource
 {
@@ -16,7 +16,7 @@ class BitcoinRatesResource extends JsonResource
     public function toArray($request)
     {
         return [
-            Carbon::parse($this->time_period_start)->timestamp * 1000,
+            $this->time_period_start * 1000,
             (double) $this->price_open,
             (double) $this->price_high,
             (double) $this->price_low,
