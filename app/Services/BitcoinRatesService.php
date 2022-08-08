@@ -3,13 +3,15 @@
 namespace App\Services;
 
 use GuzzleHttp\Client;
-use Carbon\Carbon;
-use App\Models\BitcoinRate;
-ini_set('max_execution_time', 180);
 
 class BitcoinRatesService
 {
-	public static function getRates()
+	/**
+     * Get the data from api
+     *
+     * @return array
+     */
+	public static function getRates(): array
 	{
 		// query get parameters
 		$params = [
@@ -27,18 +29,6 @@ class BitcoinRatesService
 
 		$response = $client->request('GET', '', $params);
 		$rates = json_decode($response->getBody()->getContents(), true);
-
-		self::setRates($rates);
-
 		return $rates;
-	}
-
-	public static function setRates(array $rates)
-	{
-		foreach ($rates as $rate) {
-            BitcoinRate::create($rate);
-        }
-
-        return true;
 	}
 }

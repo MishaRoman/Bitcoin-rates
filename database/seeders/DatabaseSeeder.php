@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Services\BitcoinRatesService;
+use App\Models\BitcoinRate;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,6 +15,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $rates = BitcoinRatesService::getRates();
+
+        foreach ($rates as $rate) {
+            BitcoinRate::create($rate);
+        }
     }
 }
