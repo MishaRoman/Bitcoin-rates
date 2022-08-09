@@ -25,10 +25,17 @@ class BitcoinRatesService
 		];
 		$base_uri = config('bitcoin_rates.coinApi.coin_api_url');
 		
-		$client = new Client(['base_uri' => $base_uri]);
+		$client = new Client(['base_uri' => $base_uri, 'http_errors' => false]);
 
 		$response = $client->request('GET', '', $params);
+
+		if ($response->getStatusCode() != 200) {
+			echo $response->getStatusCode() . ' ' . $response->getBody();
+			exit;
+		}
+		
 		$rates = json_decode($response->getBody()->getContents(), true);
+
 		return $rates;
 	}
 }

@@ -6,6 +6,12 @@ use App\Http\Resources\BitcoinRatesResource;
 
 class BitcoinRatesController extends Controller
 {
+    /**
+     * Get the data from database and return in ApiResource format
+     *
+     * @return Illuminate\Http\Resources\Json\JsonResource;
+     */
+
     public function index()
     {
         $rates = BitcoinRate::get([

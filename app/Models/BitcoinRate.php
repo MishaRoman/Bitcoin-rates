@@ -5,6 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property-read \Illuminate\Support\Carbon $time_period_start
+ * @property-read \Illuminate\Support\Carbon $time_period_end
+ * @property-read \Illuminate\Support\Carbon $time_open
+ * @property-read \Illuminate\Support\Carbon $time_close
+ *
+ */
+
 class BitcoinRate extends Model
 {
     use HasFactory;
